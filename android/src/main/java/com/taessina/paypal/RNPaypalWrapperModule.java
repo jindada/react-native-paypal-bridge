@@ -159,6 +159,7 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
     String price = params.getString("price");
     String currency = params.getString("currency");
     String description = params.getString("description");
+    String invoiceNumber = params.getString("invoiceNumber");
 
     PayPalPayment payment =
       new PayPalPayment(
@@ -168,6 +169,7 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
         PayPalPayment.PAYMENT_INTENT_SALE
       );
 
+    payment.invoiceNumber(invoiceNumber);
     payment.enablePayPalShippingAddressesRetrieval(true);
 
     Intent intent = new Intent(reactContext, PaymentActivity.class);
